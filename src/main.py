@@ -33,7 +33,7 @@ def parse_message(message):
                 return see_help()
         except Exception as error :
             print(error)
-            if DEBUG : return error
+            if DEBUG : return f"DEBUG: {error}"
 
 def check_if_date_is_valid(date):
     return date
