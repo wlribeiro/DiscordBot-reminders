@@ -9,12 +9,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 client = discord.Client()
 
 def parse_message(message):
-    command_list = {
-        "-list": "list_all_questions",
-        "-add": "add_question",
-        "-help": "see_help",
-        "-edit": ""
-        }
+    command_list = ["-list","-add","-help", "-edit"]
     
     count_commands = 0
     for key in command_list:
