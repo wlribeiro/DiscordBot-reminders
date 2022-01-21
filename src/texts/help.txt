@@ -3,8 +3,8 @@ Olá, esta é a seção de comandos, voce pode usar os comandos abaixo para real
 -list lista todas as questions
 
 -add adiciona uma nova question (é obrigatorio definir um atributo da família -d)
-    `$ask -add <question> -d <date>`
-    `$ask -add isso é uma questão? -d 30/01/2025`
+    `$ask -add -q <question> -d <date>`
+    `$ask -add -q isso é uma questão? -d 30/01/2025`
 
     -d adciona uma data para a questão, e a questão não irá se repetir
     -dw aciona uma data e vai repetir a questão toda semana, a partir da data escolhida

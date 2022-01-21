@@ -22,7 +22,7 @@ def parse_message(message):
     else:
         message = message.split(command_)
         if(command_ == "-add"):
-            validate_data(message)
+            validate_data(message[1])
         elif(command_ == "-list"):
             pass
         elif(command_ == "-edit"):
@@ -34,10 +34,19 @@ def check_if_date_is_valid(date):
     return date
 
 def validate_data(message, id=None):
-    message = message[1].split("-d")
+    message = message.strip(" ")
+    q = message.index("-q")
+    if q == 0: # if -q is in init of string
+        message = message.split("-q")[1] 
+        message = message[1].split("-d")
+        question = message[0]
+        date = message[1]
 
-    question = message[0]
-    check_if_date_is_valid(message[1])
+    if check_if_date_is_valid(date):
+        # add logic to save and sotrange data
+        return "Salvo com sucesso"
+    else:
+        return "Esta data é invalida"
 
 def add_question():
     question = ""
