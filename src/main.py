@@ -24,34 +24,36 @@ def parse_message(message):
         try:
             message = message.split(command_)
             if(command_ == "-add"):
-                validate_data(message[1])
+                message = validate_data(message[1])
             elif(command_ == "-list"):
                 pass
             elif(command_ == "-edit"):
-                validate_data(message)
+                message = validate_data(message)
             else:
-                return see_help()
+                message = see_help()
         except Exception as error :
             print(error)
-            if DEBUG : return f"DEBUG: {error}"
+            if DEBUG : message = f"DEBUG: {error}"
+
+        return message
 
 def check_if_date_is_valid(date):
-    return date
+    return True
 
 def validate_data(message, id=None):
     message = message.strip(" ")
     q = message.index("-q")
     if q == 0: # if -q is in init of string
         message = message.split("-q")[1] 
-        message = message[1].split("-d")
-        question = message[0]
+        message = message.split("-d")
+        question = message[0].strip(" ")
         date = message[1]
 
     if check_if_date_is_valid(date):
         # add logic to save and sotrange data
-        return "Salvo com sucesso"
+        return f"Sua quetion:\"{question}\" foi salva com suceso para o dia: {date}"
     else:
-        return "Esta data é invalida"
+        return "Não foi possivel salvar sua question porque a data é invalida"
 
 def add_question():
     question = ""
