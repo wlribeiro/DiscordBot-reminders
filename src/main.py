@@ -5,6 +5,7 @@ import dotenv
 
 dotenv.load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
+DEBUG = os.getenv("DEBUG")
 
 client = discord.Client()
 
@@ -20,15 +21,19 @@ def parse_message(message):
     if count_commands > 1 or count_commands == 0:
         return see_help()
     else:
-        message = message.split(command_)
-        if(command_ == "-add"):
-            validate_data(message[1])
-        elif(command_ == "-list"):
-            pass
-        elif(command_ == "-edit"):
-            validate_data(message)
-        else:
-            return see_help()
+        try:
+            message = message.split(command_)
+            if(command_ == "-add"):
+                validate_data(message[1])
+            elif(command_ == "-list"):
+                pass
+            elif(command_ == "-edit"):
+                validate_data(message)
+            else:
+                return see_help()
+        except Exception as error :
+            print(error)
+            if DEBUG : return error
 
 def check_if_date_is_valid(date):
     return date
