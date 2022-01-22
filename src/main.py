@@ -6,7 +6,6 @@ import sqlite3
 
 dotenv.load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
-DEBUG = os.getenv("DEBUG")
 
 client = discord.Client()
 
@@ -47,8 +46,7 @@ def parse_message(message):
                 message = see_help()
         except Exception as error :
             print(error)
-            if DEBUG : message = f"DEBUG: {error}"
-            else: message = "Oops, o programador estava com muita preguiça de validar essa exeção, qualquer duvida é só olhar `$ask -help`"
+            message = "Oops, o programador estava com muita preguiça de validar essa exeção, qualquer duvida é só olhar `$ask -help`"
 
         return message
 
